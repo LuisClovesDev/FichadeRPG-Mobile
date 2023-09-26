@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+    <string-array name="opcoes">
+        <item>fogo </item>
+        <item>agua </item>
+        <item>terra </item>
+        <item>Ar</item>
+        <item>Luz</item>
+        <item>Sombra</item>
+        <item>Gelo</item>
+        <item>Lava</item>
+        <item>Explosão</item>
+        <item>Ferro</item>
+        <item>Sangue</item>
+        <item>Gas</item>
+        <item>Relampago</item>
+        <item>verde</item>
+    </string-array>
+
+    <string-array name="opcoesRaca">
+        <item>Humano </item>
+        <item>Meio Demonio</item>
+        <item>Vampiro </item>
+        <item>Asimar</item>
+        <item>Renacido</item>
+        </string-array>
+
+    <string-array name="opcoesVantagem">
+        <item>ENCANTADOR </item>
+        <item>CONHECIMENTO</item>
+        <item>BARDISMO </item>
+        <item>LIGAÇÃO ANIMAL</item>
+        <item>CONTRABANDISTA</item>
+        <item>MESTRE EM FECHADURAS</item>
+        <item>TORCIDA</item>
+        <item>ASAS</item>
+        <item>SENTIDOS ESPECIAIS</item>
+        <item>MONTARIA</item>
+        <item>MOCHILEIRO </item>
+        <item>CLERICATO </item>
+        <item>INVENTOR </item>
+        <item>FAMA </item>
+        <item>LÁRAPIO </item>
+        <item>COLETOR </item>
+    </string-array>
+
+    <string-array name="DESVANTAGENS">
+        <item>CULTISTA INSANO</item>
+        <item>DOENÇA MAGICA INCURAVEL </item>
+        <item>COMPLEXO DE DESVANTAGEM</item>
+        <item>COMPLEXO DE ARMA HUMANA</item>
+        <item>AZARADO</item>
+        <item>EXIBIDO</item>
+        <item>CONFUSÃO</item>
+        <item>ALCOLATRA</item>
+        <item>CÓDIGO DE HONRA</item>
+        <item>COMPLEXO DE ABANDONO</item>
+        <item>BRIGÃO</item>
+        <item>PROCURADO</item>
+        <item>DESORDENADO</item>
+        <item>DEPENDENTE QUIMICO</item>
+        <item>PSICOPATA</item>
+        <item>ENTIDADE ESQUISOFRENICA</item>
+    </string-array>
+
+    <string-array name="opcoespERICIAS">
+        <item>Melhoria</item>
+        <item>Artifice </item>
+        <item>Medicina </item>
+        <item>LIDERANÇA</item>
+        <item>ALQUIMISTA</item>
+        <item>Escudero</item>
+        <item>ATLETISMO</item>
+        <item>FURTIVIDADE</item>
+        <item>INTERROGAR</item>
+        <item>percepção</item>
+        <item>SOBREVIVÊNCIA</item>
+    </string-array>
+
+
+</resources>

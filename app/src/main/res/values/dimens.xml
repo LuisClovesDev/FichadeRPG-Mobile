@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dimensões para tela pequena -->
+    <dimen name="margin_left_small">12dp</dimen>
+    <dimen name="margin_right_small">200dp</dimen>
+    <dimen name="margin_top_small">360dp</dimen>
+    <dimen name="margin_bottom_small">300dp</dimen>
+
+    <!-- Dimensões para tela normal (usando os mesmos valores neste exemplo) -->
+    <dimen name="margin_left_normal">12dp</dimen>
+    <dimen name="margin_right_normal">200dp</dimen>
+    <dimen name="margin_top_normal">360dp</dimen>
+    <dimen name="margin_bottom_normal">300dp</dimen>
+
+    <!-- Outras dimensões para telas grandes, extragrandes, etc. se necessário -->
+
+</resources>
