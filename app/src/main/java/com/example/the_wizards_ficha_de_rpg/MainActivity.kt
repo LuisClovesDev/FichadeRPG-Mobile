@@ -1,10 +1,6 @@
 package com.example.the_wizards_ficha_de_rpg
 
-import Consolefuns
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
@@ -12,8 +8,6 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
@@ -148,18 +142,18 @@ class MainActivity : AppCompatActivity() {
 
 
         var Mobilidade = findViewById<TextView>(R.id.Mobilidade_Bonus)
-        var Armaduras = findViewById<TextView>(R.id.Armadura_Bonus)
+        var Armaduras = findViewById<TextView>(R.id.Armadura_Fisica_Bonus)
 
         // MUDANÇA DE VALOR DE PONTO PARA BONUS
-        F.Calc_Pontos_Bonus(Pontos_DESTREZA, Bonus_DESTREZA, false)
-        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA, Bonus_RESISTENCIA, false)
-        F.Calc_Pontos_Bonus(Pontos_INTELIGENCIA, Bonus_INTELIGENCIA, false)
-        F.Calc_Pontos_Bonus(Pontos_FORCA, Bonus_FORCA, false)
-        F.Calc_Pontos_Bonus(Pontos_Vida, Bonus_VIDA, true)
-        F.Calc_Pontos_Bonus(Ponto_MANA, Bonus_MANA, true)
-
-        F.Calc_Pontos_Bonus(Pontos_DESTREZA_for_Mobilit, Mobilidade, false, true)
-        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA_for_Armadura, Armaduras, false, false, true)
+        F.Calc_Pontos_Bonus(Pontos_DESTREZA, Bonus_DESTREZA, false, extrabonus = EXTRABONUSDESTREZA)
+        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA, Bonus_RESISTENCIA, false, extrabonus = EXTRABONUSRESISTENCIA)
+        F.Calc_Pontos_Bonus(Pontos_INTELIGENCIA, Bonus_INTELIGENCIA, false, extrabonus = EXTRABONUSINTELIGENCIA)
+        F.Calc_Pontos_Bonus(Pontos_FORCA, Bonus_FORCA, false, extrabonus = EXTRABONUSFORCA )
+        F.Calc_Pontos_Bonus(Pontos_Vida, Bonus_VIDA, true, extrabonus = EXTRABONUSVIDA)
+        F.Calc_Pontos_Bonus(Ponto_MANA, Bonus_MANA, true, extrabonus = EXTRABONUSMANA)
+        EXTRABONUSDESTREZA.text = "0"
+        F.Calc_Pontos_Bonus(Pontos_DESTREZA_for_Mobilit, Mobilidade, false, true, extrabonus = EXTRABONUSDESTREZA )
+        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA_for_Armadura, Armaduras, false, false, true, extrabonus = EXTRABONUSRESISTENCIA )
 
         // ---------------------------------------------------------
 
@@ -171,15 +165,18 @@ class MainActivity : AppCompatActivity() {
         val ImageBotoes: ImageButton = findViewById(R.id.DESTREZABUTAO)
 
         ImageBotoes.setOnClickListener() {
-            var AdVE = Atribuicao_de_Valores_Extras()
+            var AdVE_Elemento = Atribuicao_de_Valores_Extras()
             var Ele = Elementos_funcoes()
+            var Rar = RacaFuncoes()
             val elementoNome = spinnerHelper.selectedItem
+            val RacaNome = spinnerHelperRaca.selectedItem
 
 // Chame getObjetoElemento para obter um objeto Elementos
             val elemento = Ele.getObjetoElemento(elementoNome)
+            val Raca = Rar.getObjetoRaca(RacaNome)
 
 // Verifique se o elemento não é nulo antes de chamar AtribuicaoELEMENTO
-            if (elemento != null) {
+            if (elemento != null && Raca != null) {
 
                 // segurança caso aperte o botão mais de uma vez
                 elemento.AddDestreza = 0
@@ -193,20 +190,28 @@ class MainActivity : AppCompatActivity() {
                 elemento.AddAtaqueExtra = 0
                 elemento.AddAcaoExtra = 0
                 // ------------------------------------
-
-                AdVE.AtribuicaoELEMENTO(elemento, nivel)
+                // segurança caso aperte o botão mais de uma vez
+                Raca.AddVida = 0
+                Raca.AddMana = 0
+                Raca.AddInteligencia = 0
+                Raca.AddDestreza = 0
+                Raca.AddForca = 0
+                Raca.AddResistencia = 0
+                // ------------------------------------
+                AdVE_Elemento.AtribuicaoELEMENTO(elemento, nivel)
+                AdVE_Elemento.AtribuicaoRaca(Raca,nivel)
 
                 // -------------------------------------
 
-                EXTRABONUSDESTREZA.text = "+${elemento.AddDestreza}"
-                EXTRABONUSRESISTENCIA.text = "+${elemento.AddResistencia}"
-                EXTRABONUSINTELIGENCIA.text = "+${elemento.AddInteligencia}"
-                EXTRABONUSFORCA.text = "+${elemento.AddForca}"
-                EXTRABONUSVIDA.text = "+${elemento.AddVida}"
-                EXTRABONUSMANA.text = "+${elemento.AddMana}"
+                EXTRABONUSDESTREZA.text = "${elemento.AddDestreza + Raca.AddDestreza}"
+                EXTRABONUSRESISTENCIA.text = "+${elemento.AddResistencia + Raca.AddResistencia}"
+                EXTRABONUSINTELIGENCIA.text = "+${elemento.AddInteligencia + Raca.AddInteligencia}"
+                EXTRABONUSFORCA.text = "+${elemento.AddForca + Raca.AddForca}"
+                EXTRABONUSVIDA.text = "+${elemento.AddVida + Raca.AddVida}"
+                EXTRABONUSMANA.text = "+${elemento.AddMana + Raca.AddMana}"
             } else {
                 // Lide com o caso em que o elemento não foi encontrado
-                EXTRABONUSDESTREZA.text = "Elemento não encontrado"
+                EXTRABONUSDESTREZA.text = "Erra em Elemento ou raça"
             }
         }
 

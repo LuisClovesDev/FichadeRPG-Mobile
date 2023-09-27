@@ -10,15 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@color/gray"
         tools:context=".MainActivity">
 
         <View
             android:id="@+id/Info"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/caixadeatributo"
+            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintBottom_toTopOf="@id/Base_Conteiner_Atributos"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,32 +81,13 @@
             android:id="@+id/Base_Conteiner_Atributos"
             android:layout_width="210dp"
             android:layout_height="500dp"
-            android:layout_marginTop="66dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintBottom_toTopOf="@id/botaomenu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/Info" />
 
-        <View
-            android:id="@+id/cabecalho"
-            android:layout_width="206dp"
-            android:layout_height="30dp"
-            android:background="@drawable/nome_do_espaco"
-            app:layout_constraintBottom_toTopOf="@id/DESTREZA"
-            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Atributos: Bonus  Extra Bonus"
-            app:layout_constraintStart_toStartOf="@id/cabecalho"
-            app:layout_constraintTop_toTopOf="@id/cabecalho"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="2dp"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-        />
 
         <View
             android:id="@+id/DESTREZA"
@@ -441,9 +421,10 @@
 
         <View
             android:id="@+id/Base_Conteiner_Modificadores_Mobilidade"
-            android:layout_width="200dp"
+            android:layout_width="190dp"
             android:layout_height="80dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintLeft_toRightOf="@id/Base_Conteiner_Atributos"
             app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Atributos"
 
@@ -482,9 +463,10 @@
 
         <View
             android:id="@+id/Base_Conteiner_Modificadores_Armadura"
-            android:layout_width="200dp"
+            android:layout_width="190dp"
             android:layout_height="80dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintLeft_toRightOf="@id/Base_Conteiner_Atributos"
             app:layout_constraintTop_toBottomOf="@id/Base_Conteiner_Modificadores_Mobilidade"
 
@@ -492,44 +474,70 @@
 
         <View
             android:id="@+id/Armaduras"
-            android:layout_width="120dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/caixadeatributo"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Modificadores_Armadura"
             app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Modificadores_Armadura"
+            app:layout_constraintRight_toRightOf="Base_Conteiner_Modificadores_Armadura"
 
             />
 
+
         <TextView
-            android:id="@+id/Armadura_Bonus"
-            android:layout_width="100dp"
+            android:id="@+id/Armadura_Fisica_Bonus"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="12dp"
             android:gravity="center"
-            android:hint="0/F"
+            android:hint="0"
             android:textColor="@color/black"
-            android:textSize="36dp"
+            android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/Armaduras"
             app:layout_constraintLeft_toLeftOf="@id/Armaduras"
             app:layout_constraintTop_toTopOf="@id/Armaduras" />
 
+
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintStart_toEndOf="@id/Armaduras"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toEndOf="@id/Armadura_Fisica_Bonus"
             app:layout_constraintTop_toTopOf="@id/Armaduras"
             app:srcCompat="@drawable/armf" />
+
+        <TextView
+            android:id="@+id/Armadura_Magica_Bonus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:hint="0"
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/Armaduras"
+            app:layout_constraintLeft_toRightOf="@id/imageView8"
+            app:layout_constraintTop_toTopOf="@id/Armaduras" />
+
+        <ImageView
+            android:id="@+id/imageView8.1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toEndOf="@id/Armadura_Magica_Bonus"
+            app:layout_constraintTop_toTopOf="@id/Armaduras"
+            app:srcCompat="@drawable/armaduramagica" />
+
 
         <View
             android:id="@+id/Base_Conteiner_Adicionais"
             android:layout_width="200dp"
             android:layout_height="340dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintBottom_toTopOf="@id/botaomenu"
             app:layout_constraintLeft_toLeftOf="@id/Base_Conteiner_Modificadores_Armadura"
             app:layout_constraintTop_toBottomOf="@id/Armaduras" />

@@ -7,7 +7,7 @@ class Atribuicao_de_Valores_Extras() {
 
 
 
-    fun AtribuicaoELEMENTO(Elemento: Elementos, Nivel: TextView) {
+    fun AtribuicaoELEMENTO(Elemento: Elementos, Nivel: TextView, ) {
 
         var nivel: Int = 0
 
@@ -477,7 +477,84 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
 
+    }
+    fun AtribuicaoRaca(raca: Raca, Nivel: TextView, ){
 
-// FIM DAS CONDICIONAIS
+        var nivel: Int = 0
+
+        try {
+            val nivelText = Nivel.text.toString()
+            if (nivelText.isNotEmpty()) {
+                nivel = nivelText.toInt()
+            } else {
+                nivel = -1 // Defina o valor padrão desejado quando o texto estiver vazio
+            }
+        } catch (e: NumberFormatException) {
+            e.printStackTrace()
+            nivel = -1 // Defina o valor padrão desejado quando a conversão falhar
+        }
+
+
+        if(raca.nome == "humano"){
+
+                raca.AddVida += 5
+                raca.AddMana += 5
+
+            raca.AddVida += nivel*3
+            raca.AddMana += nivel*3
+
+            raca.Habili_Raca = " Regenera Nível Dividido por 2 de mana a cada 2 ciclos."
+
+        }
+        if (raca.nome == "renacido") {
+            // Se a raça for "renacido", aumente a vida inicial em 10.
+            raca.AddVida += 10
+
+            // Aumente a resistência mágica inicial em 2.
+            raca.ResistenciaMagica += 2
+
+            // Aumente a vida com base no nível do personagem.
+            // A cada 1 nível, adicione +5 à vida.
+            raca.AddVida += nivel * 5
+
+            // Aumente a resistência mágica com base no nível do personagem.
+            // A cada 2 níveis, adicione +1 em resistência mágica.
+            if (nivel % 2 == 0) {
+                raca.ResistenciaMagica += nivel / 2
+            }
+
+            // Defina que a mana é desconsiderada para esta raça.
+            raca.AddMana = 0
+
+            // Defina a passiva de regeneração fora de combate.
+            raca.Habili_Raca = "Recebe 1d4 + $nivel de vida por turno fora de combate."
+        }
+        if (raca.nome == "vampiro") {
+            // Inicialmente, recebe -3 de Armadura Física.
+            raca.ArmaduraFisica -= 3
+
+            // Inicialmente, recebe +10 de mana.
+            raca.AddMana += 10
+
+            // Inicialmente, recebe +5 de vida.
+            raca.AddVida += 5
+
+            // Aumenta a vida com base no nível do personagem.
+            // A cada 2 níveis, adicione +1 à vida.
+            if (nivel % 2 == 0) {
+                raca.AddVida += nivel / 2
+            }
+
+            // Aumenta a mana com base no nível do personagem.
+            // A cada 1 nível, adicione +4 à mana.
+            raca.AddMana += nivel * 4
+
+            // Define a habilidade especial de dar um buff em uma habilidade.
+            // Inicialmente, ganha a passiva "Transformação noturna".
+            raca.Habili_Raca = "Pode dar um buff em uma habilidade que aumentará o efeito com base no nível e lhe curará" +
+                    " ${nivel + 1}d4 de vida. O custo da habilidade irá dobrar de valor de Mana;" +
+                    " Transformação noturna: Transforma-se em vampiro ganhando garras e uma pele escura."
+        }
+
     }
 }

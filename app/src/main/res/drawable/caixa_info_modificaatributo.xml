@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Contorno principal em MarromSuave -->
+    <item>
+        <shape>
+            <solid android:color="@color/fundo" />
+            <stroke
+                android:color="@color/black"
+                android:width="4dp" />
+        </shape>
+    </item>
 
-    <solid android:color="@color/NavajoWhite"/>
-    <corners android:radius="20sp"/>
-    <stroke android:color="@color/black"
-        android:width="4dp"
-        />
+    <!-- Contorno adicional em Preto (ajuste o width conforme necessário) -->
+    <item android:right="4dp" android:left="4dp" android:top="4dp" android:bottom="4dp">
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:color="@color/MarromSuave"
+                android:width="4dp" />
+        </shape>
+    </item>
 
-
-</shape>
+</layer-list>

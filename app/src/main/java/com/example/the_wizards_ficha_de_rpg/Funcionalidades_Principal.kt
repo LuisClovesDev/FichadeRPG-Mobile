@@ -5,6 +5,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import org.w3c.dom.Text
 
 class Funcionalidades_Principal {
 
@@ -36,20 +37,27 @@ class Funcionalidades_Principal {
         }
         return "0" // Valor padrão caso ocorra uma exceção
     }
-    fun calculateBonusFromEditText_for_MobilidadeEArmadura(Text:TextView): String {
+    fun calculateBonusFromEditText_for_MobilidadeEArmadura(Text: TextView, extrabonusTextViw: TextView): String {
         try {
+            var extrabonus = extrabonusTextViw.text.toString().toInt()
+
             val pontos = Text.text.toString().toInt()
-            val bonus = pontos / 10
+
+            val bonus = (pontos + (extrabonus *5)) / 10
+
             return "$bonus M"
         } catch (e: NumberFormatException) {
             e.printStackTrace()
         }
-        return "0" // Valor padrão caso ocorra uma exceção
+        return "ERRO" // Valor padrão caso ocorra uma exceção
     }
-    fun calculateBonusFromEditText_forArmadura(Text:TextView): String {
+
+    fun calculateBonusFromEditText_forArmadura(Text:TextView, extrabonusTextViw: TextView): String {
         try {
             val pontos = Text.text.toString().toInt()
-            val bonus = (pontos / 25) - 1
+            var extrabonus = extrabonusTextViw.text.toString().toInt()
+            var bonus = -1
+            bonus += (pontos + (extrabonus *5)) / 25
             return "$bonus A/F"
         } catch (e: NumberFormatException) {
             e.printStackTrace()
@@ -58,7 +66,7 @@ class Funcionalidades_Principal {
     }
 
     fun Calc_Pontos_Bonus(editText: EditText, bonusTextView: TextView, isLifeORMana: Boolean,
-                          IsExtraMobilit: Boolean? = null, IsExtraArmadura: Boolean? = null) {
+                          IsExtraMobilit: Boolean? = null, IsExtraArmadura: Boolean? = null, extrabonus:TextView,) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Nada a fazer antes da mudança de texto
@@ -70,9 +78,14 @@ class Funcionalidades_Principal {
                 if (isLifeORMana) {
                     bonusTextView.text = calculateBonusFromEditText_for_LifeEndMana(editText)
                 }else if (!isLifeORMana && IsExtraMobilit == false && IsExtraArmadura == true ){
-                    bonusTextView.text =  calculateBonusFromEditText_forArmadura(editText)
+                    bonusTextView.text =  calculateBonusFromEditText_forArmadura(editText,extrabonus)
                 }else if (!isLifeORMana && IsExtraMobilit == true){
-                    bonusTextView.text =  calculateBonusFromEditText_for_MobilidadeEArmadura(editText)
+                    if (extrabonus.text != null){
+                        bonusTextView.text =  calculateBonusFromEditText_for_MobilidadeEArmadura(editText,extrabonus)
+                    }else{
+                        bonusTextView.text = "ERRO"
+
+                    }
                 }else if (!isLifeORMana){
                     bonusTextView.text =  calculateBonusFromEditText(editText)
                 }

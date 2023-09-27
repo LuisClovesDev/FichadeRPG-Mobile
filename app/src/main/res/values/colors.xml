@@ -2,9 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#C0C0C0</color>
+    <color name="gray">#EEEEEE</color>
     <color name="yellow">#FFFF00</color>
-    <color name="NavajoWhite">#FFDEAD</color>
+    <color name="fundo">#F5E6C1</color>
+    <color name="MarromSuave">#A68B5B</color>
     <color name="grey">#00FF00</color>
     <color name="RED">#FF0000</color>
     <color name="cu">#FFFFE0</color>
