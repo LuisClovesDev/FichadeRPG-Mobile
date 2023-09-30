@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado normal (sem clique) -->
+    <item android:drawable="@drawable/iconemochila" />
+
+    <!-- Estado pressionado (clicado) -->
+    <item android:state_pressed="true" android:drawable="@drawable/iconemochilaclicado" />
+
+    <!-- Outros estados (como focado, desativado) -->
+    <!-- Você pode adicionar mais itens conforme necessário -->
+
+</selector>
