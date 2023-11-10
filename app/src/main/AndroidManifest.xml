@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,13 +17,27 @@
         android:theme="@style/Theme.TheWizardsFichaDeRPG"
         tools:targetApi="31">
         <activity
+            android:name=".mochila.Mochila"
+            android:exported="false" />
+        <activity
+            android:name=".Inventario"
+            android:exported="false" />
+        <activity
+            android:name=".Console_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Console_View"
+            android:exported="false"
+            android:label="@string/title_activity_console_view"
+            android:theme="@style/Theme.TheWizardsFichaDeRPG" />
+        <activity
             android:name=".Editor_De_Atributos"
             android:exported="false" />
         <activity
             android:name=".modificadores"
             android:exported="false" />
         <activity
-            android:name=".Editi_atributos_actibity"
+            android:name=".model.Editar_Itens_activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -24,6 +24,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/Console"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="@id/Info"
+            app:layout_constraintEnd_toEndOf="@id/Info"
+            app:srcCompat="@drawable/ic_launcher_background"
+            />
+        <ImageButton
             android:id="@+id/DESTREZABUTAO"
             android:layout_width="40dp"
             android:layout_height="40dp"

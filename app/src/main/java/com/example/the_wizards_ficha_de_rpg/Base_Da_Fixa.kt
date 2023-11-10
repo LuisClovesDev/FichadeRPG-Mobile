@@ -30,7 +30,8 @@ class Elementos(
     var AddMana: Int,
     var AddTempodeCarga: Int,
     var AddAtaqueExtra: Int,
-    var AddAcaoExtra: Int
+    var AddAcaoExtra: Int,
+    var ElementoSelect: Boolean
 
 )
 var Fogo = Elementos(
@@ -43,7 +44,8 @@ var Fogo = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Terra = Elementos(
     nome = "Terra",
@@ -55,7 +57,8 @@ var Terra = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 
 var Ar = Elementos(
@@ -68,7 +71,8 @@ var Ar = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 
 var Agua = Elementos(
@@ -81,7 +85,8 @@ var Agua = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Luz = Elementos(
     nome = "Luz",
@@ -93,7 +98,8 @@ var Luz = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Sombra = Elementos(
     nome = "Sombra",
@@ -105,7 +111,8 @@ var Sombra = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Gelo = Elementos(
     nome = "Gelo",
@@ -117,7 +124,8 @@ var Gelo = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Explosao = Elementos(
     nome = "Explosao",
@@ -129,7 +137,8 @@ var Explosao = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Sangue = Elementos(
     nome = "Sangue",
@@ -141,7 +150,8 @@ var Sangue = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Relampago = Elementos(
     nome = "Relampago",
@@ -153,7 +163,8 @@ var Relampago = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Ferro = Elementos(
     nome = "Ferro",
@@ -165,7 +176,8 @@ var Ferro = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Verde = Elementos(
     nome = "Verde",
@@ -177,7 +189,8 @@ var Verde = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )
 var Gas = Elementos(
     nome = "Gas",
@@ -189,5 +202,6 @@ var Gas = Elementos(
     0, 0,
     0,
     0,
-    0
+    0,
+    false
 )

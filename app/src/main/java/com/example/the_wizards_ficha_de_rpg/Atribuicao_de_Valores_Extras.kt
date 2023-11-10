@@ -24,6 +24,7 @@ class Atribuicao_de_Valores_Extras() {
         }
 
             if (Elemento.nome == "Ar") {
+                Elemento.ElementoSelect = true
                 if (nivel < 1) {
                     Elemento.AddDestreza = 0
                     Elemento.AddPDH = 0
@@ -63,7 +64,7 @@ class Atribuicao_de_Valores_Extras() {
             }
 
         if (Elemento.nome == "Fogo") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddPDH += 2
             }
@@ -90,7 +91,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Agua") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddMana += 5
             }
@@ -120,7 +121,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Terra") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddMana += 5
             }
@@ -156,7 +157,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Luz") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddInteligencia += 1
             }
@@ -189,7 +190,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Sombra") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddInteligencia += 1
             }
@@ -225,7 +226,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Explosao") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddPDH += 4
             }
@@ -261,7 +262,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Gelo") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddPDH += 2
             }
@@ -297,7 +298,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Sangue") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddVida += 10
             }
@@ -333,7 +334,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Relampago") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddDestreza += 2
             }
@@ -369,7 +370,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Ferro") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddResistencia += 4
             }
@@ -405,7 +406,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Verde") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddVida += 10
             }
@@ -441,7 +442,7 @@ class Atribuicao_de_Valores_Extras() {
             }
         }
         if (Elemento.nome == "Gas") {
-
+            Elemento.ElementoSelect = true
             if (nivel >= 1) {
                 Elemento.AddPDH += 2
             }
@@ -506,6 +507,20 @@ class Atribuicao_de_Valores_Extras() {
             raca.Habili_Raca = " Regenera Nível Dividido por 2 de mana a cada 2 ciclos."
 
         }
+        if (raca.nome == "asimar") {
+            raca.AddVida -= 2 // Inicialmente recebe -2 de armadura física
+            raca.AddDestreza += 2 // Inicialmente recebe +2 de destreza
+            raca.AddMana += 5 // Inicialmente recebe +5 de mana
+
+            val vidaBonus = (nivel / 2) * 3 // A cada 2 níveis recebe +3 de vida
+            val manaBonus = nivel * 2 // A cada 1 nível recebe +2 de mana
+
+            raca.AddVida = vidaBonus
+            raca.AddMana = manaBonus
+
+            raca.Habili_Raca = "Recebe ${nivel / 2} a mais de turno extra. Sua Resistência Física é cortada pela metade."
+        }
+
         if (raca.nome == "renacido") {
             // Se a raça for "renacido", aumente a vida inicial em 10.
             raca.AddVida += 10

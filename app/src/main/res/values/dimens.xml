@@ -12,6 +12,7 @@
     <dimen name="margin_right_normal">200dp</dimen>
     <dimen name="margin_top_normal">360dp</dimen>
     <dimen name="margin_bottom_normal">300dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
     <!-- Outras dimensões para telas grandes, extragrandes, etc. se necessário -->
 

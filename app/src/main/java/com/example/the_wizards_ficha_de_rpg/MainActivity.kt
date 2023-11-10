@@ -1,5 +1,8 @@
 package com.example.the_wizards_ficha_de_rpg
 
+import android.app.Dialog
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -8,13 +11,26 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import com.example.the_wizards_ficha_de_rpg.mochila.Mochila
+import com.example.the_wizards_ficha_de_rpg.model.Item
 
 class MainActivity : AppCompatActivity() {
 
-// luis 3
+    // luis 3
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+        // Crie um diálogo personalizado
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.ficha_novo_item)
+
+        // Configure outros elementos do diálogo, se necessário
+        //val BotaodeNovoItem = findViewById<FloatingActionButton>(R.id.Adicionar)
+
 
 
         // FUNÇÕES DE CALCULO
@@ -146,18 +162,42 @@ class MainActivity : AppCompatActivity() {
 
         // MUDANÇA DE VALOR DE PONTO PARA BONUS
         F.Calc_Pontos_Bonus(Pontos_DESTREZA, Bonus_DESTREZA, false, extrabonus = EXTRABONUSDESTREZA)
-        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA, Bonus_RESISTENCIA, false, extrabonus = EXTRABONUSRESISTENCIA)
-        F.Calc_Pontos_Bonus(Pontos_INTELIGENCIA, Bonus_INTELIGENCIA, false, extrabonus = EXTRABONUSINTELIGENCIA)
-        F.Calc_Pontos_Bonus(Pontos_FORCA, Bonus_FORCA, false, extrabonus = EXTRABONUSFORCA )
+        F.Calc_Pontos_Bonus(
+            Pontos_RESISTENCIA,
+            Bonus_RESISTENCIA,
+            false,
+            extrabonus = EXTRABONUSRESISTENCIA
+        )
+        F.Calc_Pontos_Bonus(
+            Pontos_INTELIGENCIA,
+            Bonus_INTELIGENCIA,
+            false,
+            extrabonus = EXTRABONUSINTELIGENCIA
+        )
+        F.Calc_Pontos_Bonus(Pontos_FORCA, Bonus_FORCA, false, extrabonus = EXTRABONUSFORCA)
         F.Calc_Pontos_Bonus(Pontos_Vida, Bonus_VIDA, true, extrabonus = EXTRABONUSVIDA)
         F.Calc_Pontos_Bonus(Ponto_MANA, Bonus_MANA, true, extrabonus = EXTRABONUSMANA)
         EXTRABONUSDESTREZA.text = "0"
-        F.Calc_Pontos_Bonus(Pontos_DESTREZA_for_Mobilit, Mobilidade, false, true, extrabonus = EXTRABONUSDESTREZA )
-        F.Calc_Pontos_Bonus(Pontos_RESISTENCIA_for_Armadura, Armaduras, false, false, true, extrabonus = EXTRABONUSRESISTENCIA )
+        F.Calc_Pontos_Bonus(
+            Pontos_DESTREZA_for_Mobilit,
+            Mobilidade,
+            false,
+            true,
+            extrabonus = EXTRABONUSDESTREZA
+        )
+        F.Calc_Pontos_Bonus(
+            Pontos_RESISTENCIA_for_Armadura,
+            Armaduras,
+            false,
+            false,
+            true,
+            extrabonus = EXTRABONUSRESISTENCIA
+        )
 
         // ---------------------------------------------------------
 
-        // MUDA EXTRA BONUS
+        // ---------------------------------------------------------
+
 
 
         // BOTOES DE CONSOLE...
@@ -199,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                 Raca.AddResistencia = 0
                 // ------------------------------------
                 AdVE_Elemento.AtribuicaoELEMENTO(elemento, nivel)
-                AdVE_Elemento.AtribuicaoRaca(Raca,nivel)
+                AdVE_Elemento.AtribuicaoRaca(Raca, nivel)
 
                 // -------------------------------------
 
@@ -211,21 +251,24 @@ class MainActivity : AppCompatActivity() {
                 EXTRABONUSMANA.text = "+${elemento.AddMana + Raca.AddMana}"
             } else {
                 // Lide com o caso em que o elemento não foi encontrado
-                EXTRABONUSDESTREZA.text = "Erra em Elemento ou raça"
+                EXTRABONUSDESTREZA.text = "Erro em Elemento ou raça"
             }
         }
+        // -------------------------------------
+        // ABRIR INVENTÁRIO
+        val ImageButtomMudar: ImageButton = findViewById(R.id.BotaoMochila)
+
+        ImageButtomMudar.setOnClickListener() {
+            // Crie um Intent para iniciar a próxima Activity
+            val intent = Intent(this, Mochila::class.java)
+
+            // Se desejar, você pode passar dados para a próxima Activity usando putExtra
+            intent.putExtra("chave", "valor") // Substitua "chave" e "valor" pelos seus dados
+
+            // Inicie a próxima Activity
+            startActivity(intent)
+        }
+
 
     }
-
-
-// FIM DA OPERAÇOES INICAIS
-
-
-
 }
-
-
-
-
-
-

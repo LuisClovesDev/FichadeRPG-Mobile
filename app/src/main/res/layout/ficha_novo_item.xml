@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="450dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/caixa_info_modificaatributo"
+    >
+
+    <TextView
+        android:id="@+id/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADICINAR NOVO ITEM"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        />
+
+    <ImageButton
+        android:id="@+id/NovaImagem"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="40dp"
+        android:clickable="true"
+        android:src="@drawable/galeria"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Titulo"/>
+
+    <EditText
+        android:id="@+id/nomedoitem"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="NOME DO ITEM"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="textMultiLine"
+        android:maxLines="1"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@id/NovaImagem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        />
+    <EditText
+        android:id="@+id/descricao"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="DESCRIÇÃO"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:maxLines="4"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintTop_toBottomOf="@id/nomedoitem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        />
+    <EditText
+        android:id="@+id/bonusdoitem"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="BONUS"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/descricao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IMAGEM"
+        android:id="@+id/CloseButtom"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintBottom_toTopOf="@id/ConcluirButtom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMCLUIR"
+        android:id="@+id/ConcluirButtom"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
