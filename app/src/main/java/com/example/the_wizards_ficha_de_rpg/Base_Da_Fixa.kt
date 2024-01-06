@@ -1,10 +1,6 @@
 package com.example.the_wizards_ficha_de_rpg
 
-import android.widget.EditText
-import android.widget.TextView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.the_wizards_ficha_de_rpg.outros.FuncoesNivel
 
 val Ni = FuncoesNivel()
 
@@ -194,6 +190,19 @@ var Verde = Elementos(
 )
 var Gas = Elementos(
     nome = "Gas",
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, 0,
+    0,
+    0,
+    0,
+    false
+)
+var Elemento_Nulo = Elementos(
+    nome = "Nulo",
     0,
     0,
     0,

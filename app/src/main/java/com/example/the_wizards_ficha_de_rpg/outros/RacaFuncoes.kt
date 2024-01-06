@@ -1,6 +1,8 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 import android.widget.ImageView
+import android.widget.Spinner
+import com.example.the_wizards_ficha_de_rpg.R
 
 class RacaFuncoes {
 
@@ -15,6 +17,10 @@ class RacaFuncoes {
             else -> null
         }
 
+    }
+
+    fun obterTextoDoSpinner(spinner: Spinner): String {
+        return spinner.selectedItem.toString()
     }
 
     fun MudaImagem(RacaAtual: String?, imageView: ImageView) {

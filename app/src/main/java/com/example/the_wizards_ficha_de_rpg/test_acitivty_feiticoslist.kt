@@ -1,17 +1,15 @@
-package com.example.the_wizards_ficha_de_rpg.mochila
+package com.example.the_wizards_ficha_de_rpg
 
-import Adapter_Item
-import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
@@ -24,14 +22,19 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.the_wizards_ficha_de_rpg.R
 import com.example.the_wizards_ficha_de_rpg.Salvamento.Data_Class_Item_Doa
+import com.example.the_wizards_ficha_de_rpg.adapter.Adapter_Feitico
+import com.example.the_wizards_ficha_de_rpg.feitico.FeiticoDao
+import com.example.the_wizards_ficha_de_rpg.feitico.Item_feitico
+import com.example.the_wizards_ficha_de_rpg.mochila.Mochila
 import com.example.the_wizards_ficha_de_rpg.model.Editar_Itens_activity
 import com.example.the_wizards_ficha_de_rpg.model.Item
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class Mochila : AppCompatActivity(), Adapter_Item.OnItemClickListener {
 
+class test_acitivty_feiticoslist : AppCompatActivity(), Adapter_Feitico.OnFeitico_ItemClickListener {
+
+    // DIALOG NOVO FEITICO
     private lateinit var dialog: Dialog
 
     companion object {
@@ -112,13 +115,14 @@ class Mochila : AppCompatActivity(), Adapter_Item.OnItemClickListener {
             else -> RequestGaleria.launch(Permisao_Galeria)
         }
     }
-
     // --------------
-    private lateinit var adapterItem: Adapter_Item
-    override fun onItemClick(itemId: Long) {
+    private lateinit var adapterFeiticos: Adapter_Feitico
+    // --------------
+
+    override fun onItemClick(Feiticoid: Long) {
         // Agora, você recebe o ID do item aqui
-        val intent = Intent(this, Editar_Itens_activity::class.java).apply {
-            putExtra("item_id", itemId) // Passa o ID do item para a próxima atividade
+        val intent = Intent(this, Etita_ItemFeitico::class.java).apply {
+            putExtra("Fetico_id", Feiticoid) // Passa o ID do item para a próxima atividade
         }
         startActivity(intent)
         // Fechar a atividade (opcional)
@@ -127,86 +131,84 @@ class Mochila : AppCompatActivity(), Adapter_Item.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mochila)
-        Log.d("ListaFeiticos", "A lista de feitiços está sendo executda")
+        setContentView(R.layout.activity_test_acitivty_feiticoslist)
 
-        val reciclerView_Itens = findViewById<RecyclerView>(R.id.reciclerView_Itens)
-        reciclerView_Itens.layoutManager = LinearLayoutManager(this)
-        reciclerView_Itens.setHasFixedSize(true)
+        Log.d("ListaFeiticos", "A activity_listade_feiticos iniciou")
 
-        val lista_de_itens: MutableList<Item> = mutableListOf()
-        adapterItem = Adapter_Item(
+        val reciclerview = findViewById<RecyclerView>(R.id.Reciclerview_feiticos)
+        reciclerview.layoutManager = LinearLayoutManager(this)
+        reciclerview.setHasFixedSize(true)
+
+        val ListadeFeiticos: MutableList<Item_feitico> = mutableListOf()
+        adapterFeiticos = Adapter_Feitico(
             this,
-            lista_de_itens,
+            ListadeFeiticos,
             this
-        ) // Passa a instância atual da atividade como OnItemClickListener
-        reciclerView_Itens.adapter = adapterItem
-
-        val DialogAdicionar = findViewById<FloatingActionButton>(R.id.Adicionar)
-
-
-        //============
+        )
+        reciclerview.adapter = adapterFeiticos
 
 
 
-        val resourceId = R.drawable.fogo // Substitua 'fogo' pelo nome do seu recurso drawable
-        val bitmap = BitmapFactory.decodeResource(resources, resourceId)
 
-        val db = Data_Class_Item_Doa.instancia(this)
-        val itemDao = db.itemDao()
+        // Inicializa a instância do DAO
+        val feiticoDao = Data_Class_Item_Doa.instancia(this).feiticoDao()
+
+        // Carrega os feitiços do banco de dados
+        adapterFeiticos.atualiza(feiticoDao.buscatodos())
 
 
-        adapterItem.atualiza(itemDao.buscatodos())
+        // BOTAO DE CRIAR NOVO FEITIÇO
+        val botaoNovo_feitico = findViewById<FloatingActionButton>(R.id.floatingActionButton)
 
-        //========
-
-        DialogAdicionar.setOnClickListener {
+        botaoNovo_feitico.setOnClickListener {
             dialog = Dialog(this)
-            dialog.setContentView(R.layout.ficha_novo_item)
+            dialog.setContentView(R.layout.cria_edita_feitico)
             dialog.show()
 
             // imagem,
             var Adicionar_Imagem = dialog.findViewById<ImageButton>(R.id.NovaImagem)
             // nome
-            var Texto_Item_Nome = dialog.findViewById<EditText>(R.id.nomedoitem)
-            // descrição
-            var Texto_Descricao_Item = dialog.findViewById<EditText>(R.id.descricao)
-            // bonus
-            var Texto_Bonus_Item = dialog.findViewById<EditText>(R.id.bonusdoitem)
-            // finalizar
-            var Finalizar_Novo_Item = dialog.findViewById<Button>(R.id.ConcluirButtom)
+            var nome_feitico = dialog.findViewById<EditText>(R.id.nome_feitico)
+            // mana
+            var Custo_de_mana = dialog.findViewById<EditText>(R.id.custo_de_mana)
+            // tempo de carga
+            var Tempo_de_Carga = dialog.findViewById<EditText>(R.id.tempo_decarga_do_feitico)
+            // descriçao
+            var descricao_do_feitico = dialog.findViewById<EditText>(R.id.descricao_do_feitico)
+            //CONCLUI
+            var botao_concluir = dialog.findViewById<Button>(R.id.Butao_de_concluir)
 
+            // adicionar nova imagem configuração
             Adicionar_Imagem.setOnClickListener {
                 PermissaoGaleria()
             }
-            Finalizar_Novo_Item.setOnClickListener {
-                // COLETA VALORES DOS TEXT VIEW E COLETA IMAGEM PEGA DA GALERIA
-                val este = Item(
-                    0L,
+            botao_concluir.setOnClickListener{
+                val novo_feitico = Item_feitico(
+                    id = 0L,
                     Adicionar_Imagem.drawable.toBitmap(),
-                    Texto_Item_Nome.text.toString(),
-                    Texto_Descricao_Item.text.toString(),
-                    Texto_Bonus_Item.text.toString(),
+                    nome_feitico.text.toString(),
+                    Custo_de_mana.text.toString(),
+                    Tempo_de_Carga.text.toString(),
+                    descricao_do_feitico.text.toString()
                 )
+
                 // ROOM DATA BASE
                 val db = Data_Class_Item_Doa.instancia(this)
-                val itemDao = db.itemDao()
-                itemDao.salva(
-                    este
+                val feiticoDao = db.feiticoDao()
+                feiticoDao.salva(
+                    novo_feitico
                 )
-                itemDao.salva()
+                feiticoDao.salva()
 
 
                 //lista_de_itens.add(este)
-                adapterItem.atualiza(itemDao.buscatodos())
-                adapterItem.notifyItemInserted(lista_de_itens.size - 1) // Notifique o adaptador sobre a inserção do novo item
+                adapterFeiticos.atualiza(feiticoDao.buscatodos())
+                adapterFeiticos.notifyItemInserted(ListadeFeiticos.size - 1)
+
+
 
                 dialog.dismiss()
             }
         }
     }
-
-
-
 }
-

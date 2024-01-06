@@ -1,4 +1,4 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 class Raca(
     var nome: String = "Nulo",
@@ -6,6 +6,7 @@ class Raca(
     var AddForca: Int,
     var AddResistencia: Int,
     var AddInteligencia: Int,
+    var PDH: Int,
     var AddVida: Int,
     var AddMana: Int,
     var ResistenciaMagica: Int,
@@ -19,6 +20,7 @@ var humano = Raca(
     AddForca = 0,
     AddResistencia = 0,
     AddInteligencia = 0,
+    PDH = 0,
     AddVida = 0,
     AddMana = 0,
     ResistenciaMagica = 0,
@@ -32,6 +34,7 @@ var renacido = Raca(
     ResistenciaMagica = 0,
     AddResistencia = 0,
     AddInteligencia = 0,
+    PDH = 0,
     AddVida = 0,
     AddMana = 0,
     ArmaduraFisica = 0,
@@ -43,6 +46,7 @@ var vampiro = Raca(
     AddForca = 0,
     AddResistencia = 0,
     AddInteligencia = 0,
+    PDH = 0,
     AddVida = 0,
     AddMana = 0,
     ResistenciaMagica = 0,
@@ -55,6 +59,7 @@ var meiodemonio = Raca(
     AddForca = 0,
     AddResistencia = 0,
     AddInteligencia = 0,
+    PDH = 0,
     AddVida = 0,
     AddMana = 0,
     ResistenciaMagica = 0,
@@ -67,6 +72,20 @@ var asimar = Raca(
     AddForca = 0,
     AddResistencia = 0,
     AddInteligencia = 0,
+    PDH = 0,
+    AddVida = 0,
+    AddMana = 0,
+    ResistenciaMagica = 0,
+    ArmaduraFisica = 0,
+    Habili_Raca = "null"
+)
+var Raca_Nulo = Raca(
+    nome = "Nulo",
+    AddDestreza = 0,
+    AddForca = 0,
+    AddResistencia = 0,
+    AddInteligencia = 0,
+    PDH = 0,
     AddVida = 0,
     AddMana = 0,
     ResistenciaMagica = 0,

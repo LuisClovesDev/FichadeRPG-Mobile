@@ -1,6 +1,5 @@
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +8,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.the_wizards_ficha_de_rpg.R
+import com.example.the_wizards_ficha_de_rpg.model.Editar_Itens_activity
 import com.example.the_wizards_ficha_de_rpg.model.Item
 
 class Adapter_Item(
     private val context: Context,
     private val itens: MutableList<Item>,
-    private val itemClickListener: OnItemClickListener
+    private val itemClickListener: OnItemClickListener = object : OnItemClickListener {
+        override fun onItemClick(itemId: Long) {
+            // Implemente a lógica padrão ou deixe em branco, dependendo do seu caso.
+        }
+    }
 ) : RecyclerView.Adapter<Adapter_Item.ItemView_Houlder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemView_Houlder {
@@ -25,6 +29,8 @@ class Adapter_Item(
 
     override fun onBindViewHolder(holder: ItemView_Houlder, position: Int) {
         val item = itens[position]
+
+
         val bitmapDrawable = BitmapDrawable(context.resources, item.bitmap)
         holder.foto.setImageDrawable(bitmapDrawable)
         holder.nome.text = item.nome
@@ -34,19 +40,14 @@ class Adapter_Item(
         holder.itemView.isActivated = item.isSelected // Define o estado de seleção
 
         holder.itemView.setOnClickListener {
-            itemClickListener.onItemClick(item)
+            itemClickListener.onItemClick(item.id) // Passa o ID do item
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(item: Item)
+        fun onItemClick(itemId: Long)
     }
 
-    interface Click_Item{
-
-        fun clickCaItem(item: Item)
-
-    }
     fun atualiza(item: List<Item>) {
         this.itens.clear()
         this.itens.addAll(item)

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Camada de borda preta -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:color="@color/Marrom"
+                android:width="4dp" />
+            <corners android:radius="25sp" />
+        </shape>
+    </item>
+
+    <!-- Camada de cor branca (sobreposta à borda preta) -->
+    <item android:left="1dp" android:right="1dp" android:top="1dp" android:bottom="1dp">
+        <shape>
+            <solid android:color="@color/white" />
+            <stroke
+                android:color="@android:color/transparent"
+                android:width="8dp" />
+            <corners android:radius="20sp" />
+        </shape>
+    </item>
+</layer-list>

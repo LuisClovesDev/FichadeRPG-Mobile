@@ -1,4 +1,4 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,26 +15,26 @@ class FuncoesNivel {
         try {
             var xp = xp.text.toString().toInt()
             var NIVEL = 0
-            if (xp >= 9) NIVEL = 1
-            if (xp >= 10) NIVEL = 2
-            if (xp >= 100) NIVEL = 3
-            if (xp >= 200) NIVEL = 4
-            if (xp >= 400) NIVEL = 5
-            if (xp >= 600) NIVEL = 6
-            if (xp >= 1000) NIVEL = 7
-            if (xp >= 3200) NIVEL = 8
-            if (xp >= 3800) NIVEL = 9
-            if (xp >= 4500) NIVEL = 10
-            if (xp >= 5700) NIVEL = 11
-            if (xp >= 6800) NIVEL = 12
-            if (xp >= 7900) NIVEL = 13
-            if (xp >= 9000) NIVEL = 14
-            if (xp >= 9600) NIVEL = 15
-            if (xp >= 10000) NIVEL = 16
-            if (xp >= 10800) NIVEL = 17
-            if (xp >= 12000) NIVEL = 18
-            if (xp >= 12900) NIVEL = 19
-            if (xp >= 14500) NIVEL = 20
+            if (xp >= 0) NIVEL = 1
+            if (xp >= 20) NIVEL = 2
+            if (xp >= 40) NIVEL = 3
+            if (xp >= 65) NIVEL = 4
+            if (xp >= 95) NIVEL = 5
+            if (xp >= 130) NIVEL = 6
+            if (xp >= 340) NIVEL = 7
+            if (xp >= 700) NIVEL = 8
+            if (xp >= 950) NIVEL = 9
+            if (xp >= 1280) NIVEL = 10
+            if (xp >= 1520) NIVEL = 11
+            if (xp >= 3040) NIVEL = 12
+            if (xp >= 4060) NIVEL = 13
+            if (xp >= 5120) NIVEL = 14
+            if (xp >= 6420) NIVEL = 15
+            if (xp >= 8560) NIVEL = 16
+            if (xp >= 11680) NIVEL = 17
+            if (xp >= 15520) NIVEL = 18
+            if (xp >= 20040) NIVEL = 19
+            if (xp >= 25320) NIVEL = 20
             return NIVEL
         } catch (e: NumberFormatException) {
             e.printStackTrace()

@@ -1,65 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/caixa_info_modificaatributo">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="EDIÇÃO DE ITEM "
-        android:textSize="40sp"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/caixa_info_modificaatributo">
 
-    <ImageView
-        android:id="@+id/Imagem"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:layout_constraintTop_toBottomOf="@+id/Titulo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:src="@drawable/galeria"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/Nome_do_item"
-        android:layout_width="360dp"
-        android:layout_height="80dp"
-        app:layout_constraintTop_toBottomOf="@id/Imagem"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:hint="Nome do item"
-        android:textSize="40sp"
-        />
-    <EditText
-        android:id="@+id/descricao_do_item"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Nome_do_item"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/Bonus_do_item"
-        android:hint="Descrição do item"
-        android:textSize="40sp"
-        />
-    <EditText
-        android:id="@+id/Bonus_do_item"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/descricao_do_item"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="Bonus do Item"
-        android:textSize="40sp"
-        />
+            <TextView
+                android:id="@+id/Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIÇÃO DE ITEM "
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/Imagem"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/Titulo"
+                android:src="@drawable/galeria"/>
+
+            <TextView
+                android:id="@+id/Nome_do_item"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:layout_below="@id/Imagem"
+                android:layout_marginTop="20dp"
+                android:text="Item"
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:layout_marginBottom="4dp"
+                />
+
+            <TextView
+                android:id="@+id/descricao_do_item"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Nome_do_item"
+                android:text="Descrição: 001001010101001001000100100100100100010010001000100100010001000"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:background="@drawable/caixa_de_texto"
+                android:padding="10dp"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/Bonus_do_item"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descricao_do_item"
+                android:text="Bonus: 1+ vitória "
+                android:textColor="@color/AzulClaro"
+                android:textSize="40sp"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

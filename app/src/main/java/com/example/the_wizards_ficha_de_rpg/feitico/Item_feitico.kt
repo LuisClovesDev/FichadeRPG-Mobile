@@ -1,4 +1,4 @@
-package com.example.the_wizards_ficha_de_rpg.model
+package com.example.the_wizards_ficha_de_rpg.feitico
 
 import android.graphics.Bitmap
 import android.os.Parcelable
@@ -8,11 +8,14 @@ import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
-data class Item (
+data class Item_feitico(
+
     @PrimaryKey(autoGenerate = true) val id: Long = 0L,
-    var bitmap: Bitmap,
+    var imagem: Bitmap,
     var nome: String,
+    var custodemana:String,
+    var tempodecarga:String,
     var descricao: String,
-    var bonus: String,
     val isSelected: Boolean = false
-) : Parcelable
+
+    ): Parcelable

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".test_acitivty_feiticoslist">
+
+    <View
+        android:id="@+id/cabecalho"
+        android:layout_width="match_parent"
+        android:layout_height="124dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@drawable/caixadeatributo"
+        />
+    <View
+        android:id="@+id/Viewpdh"
+        android:layout_width="168dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="@id/cabecalho"
+        app:layout_constraintLeft_toLeftOf="@id/cabecalho"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/inteligencia_caixa"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/Viewpdh"
+        app:layout_constraintLeft_toLeftOf="@id/Viewpdh"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:text="P.D.H:000"
+        android:textSize="36dp"
+        android:textColor="@color/AzulClaro"
+        />
+    <Spinner
+        android:layout_width="160dp"
+        android:layout_height="44dp"
+        app:layout_constraintTop_toBottomOf="@id/Viewpdh"
+        app:layout_constraintLeft_toLeftOf="@id/Viewpdh"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/spinnerpersonalizado1"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Reciclerview_feiticos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/cabecalho"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        tools:listitem="@layout/feitico"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        app:maxImageSize="48dp"
+        app:backgroundTint="@color/white"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

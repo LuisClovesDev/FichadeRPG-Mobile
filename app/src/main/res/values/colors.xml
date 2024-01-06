@@ -2,13 +2,24 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#EEEEEE</color>
+    <color name="gray">#A9A9A9</color>
     <color name="yellow">#FFFF00</color>
     <color name="fundo">#F5E6C1</color>
-    <color name="MarromSuave">#A68B5B</color>
+    <color name="Marrom">#8B4513</color>
     <color name="grey">#00FF00</color>
+    <color name="verde">#008000</color>
     <color name="RED">#FF0000</color>
-    <color name="cu">#FFFFE0</color>
-    <color name="dourado">#E2CA3E</color>
-    <color name="Blue">#0000FF</color>
+    <color name="roxoclaro">#FFFFE0</color>
+    <color name="dourado">#AD9367</color>
+    <color name="laranjaescuro">#FF4500</color>
+    <color name="AzulEscuro">#0000FF</color>
+    <color name="AzulClaro">#00BFFF</color>
+    // cores gradiente
+    <color name="roxo_gradiente.1">#070709</color>
+    <color name="roxo_gradiente.2">#1B1871</color>
+    <color name="destaque">#FFEBF0</color>
+    // GRADIENTE 2
+    <color name="lilais">#6A5ACD</color>
+    <color name="roxo">#4B0082</color>
+    <color name="roxocinzento">#483D8B</color>
 </resources>

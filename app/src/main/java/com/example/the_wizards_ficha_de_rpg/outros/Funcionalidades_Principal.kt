@@ -1,11 +1,9 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
-import org.w3c.dom.Text
 
 class Funcionalidades_Principal {
 
@@ -45,7 +43,7 @@ class Funcionalidades_Principal {
 
             val bonus = (pontos + (extrabonus *5)) / 10
 
-            return "$bonus M"
+            return "$bonus"
         } catch (e: NumberFormatException) {
             e.printStackTrace()
         }
@@ -56,9 +54,13 @@ class Funcionalidades_Principal {
         try {
             val pontos = Text.text.toString().toInt()
             var extrabonus = extrabonusTextViw.text.toString().toInt()
+
+            var racaRenacido = renacido.ArmaduraFisica
+            var racaMeiodemonio = meiodemonio.ArmaduraFisica
+
             var bonus = -1
             bonus += (pontos + (extrabonus *5)) / 25
-            return "$bonus A/F"
+            return "${bonus}"
         } catch (e: NumberFormatException) {
             e.printStackTrace()
         }
@@ -66,7 +68,7 @@ class Funcionalidades_Principal {
     }
 
     fun Calc_Pontos_Bonus(editText: EditText, bonusTextView: TextView, isLifeORMana: Boolean,
-                          IsExtraMobilit: Boolean? = null, IsExtraArmadura: Boolean? = null, extrabonus:TextView,) {
+                          IsExtraMobilit: Boolean? = null, IsExtraArmadura: Boolean? = null, extrabonus:TextView) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Nada a fazer antes da mudança de texto

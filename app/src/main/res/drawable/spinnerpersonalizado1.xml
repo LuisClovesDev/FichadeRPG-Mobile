@@ -10,7 +10,7 @@
                     <solid android:color="@color/white"/>
                     <corners android:radius="12dp"/>
                     <padding android:right="18dp"/>
-                    <stroke android:color="@color/black" android:width="4dp"/>
+                    <stroke android:color="@color/roxo_gradiente.1" android:width="4dp"/>
                 </shape>
             </item>
         </layer-list>

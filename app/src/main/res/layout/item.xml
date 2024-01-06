@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
-    android:background="@drawable/caixa_info_modificaatributo"
+    android:background="@drawable/item_bacgraund"
 
     >
 
@@ -57,11 +58,13 @@
         android:layout_height="wrap_content"
         android:text="+1 de Vantagem"
         android:textSize="18sp"
-        android:textColor="@color/Blue"
+        android:textColor="@color/AzulClaro"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/Descricao_item"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/Foto_Item"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginStart="4dp"
         />
 

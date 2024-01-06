@@ -1,6 +1,5 @@
-package com.example.the_wizards_ficha_de_rpg.model
+package com.example.the_wizards_ficha_de_rpg
 
-import Adapter_Item
 import android.Manifest
 import android.app.Dialog
 import android.content.Intent
@@ -9,6 +8,7 @@ import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
@@ -21,20 +21,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import com.example.the_wizards_ficha_de_rpg.R
 import com.example.the_wizards_ficha_de_rpg.Salvamento.Data_Class_Item_Doa
+import com.example.the_wizards_ficha_de_rpg.adapter.Adapter_Feitico
+import com.example.the_wizards_ficha_de_rpg.feitico.FeiticoDao
+import com.example.the_wizards_ficha_de_rpg.feitico.Item_feitico
 import com.example.the_wizards_ficha_de_rpg.mochila.Mochila
+import com.example.the_wizards_ficha_de_rpg.model.Item
 
-// Importe a classe Item aqui
+private var Feiticoid: Long = 0L
+private var itemSelecionado: Item_feitico? = null
+private lateinit var dialog: Dialog
 
-class Editar_Itens_activity : AppCompatActivity() {
-
-    private var itemId: Long = 0L
-    private var itemSelecionado: Item? = null
-    private lateinit var dialog: Dialog
+class Etita_ItemFeitico : AppCompatActivity() {
 
     //----------------------------------------------------------------------------
 
@@ -126,77 +126,79 @@ class Editar_Itens_activity : AppCompatActivity() {
     // -----------------------------------------------------------------------
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.detalhes_de_item)
+        setContentView(R.layout.activity_etita_item_feitico)
+
+        val Nome_do_feitico = findViewById<TextView>(R.id.Nome_do_feitico_edit)
+        val Imagem = findViewById<ImageView>(R.id.Imagem_Edit)
+        val Descricao = findViewById<TextView>(R.id.Descricao_item_edit)
+        val Custo_de_mana = findViewById<TextView>(R.id.Custo_de_mana_edit)
+        val Tempo_de_Carga = findViewById<TextView>(R.id.Tempo_de_carga_edit)
 
         // Obtem o ID do item da Intent
-        itemId = intent.getLongExtra("item_id", 0L)
+        Feiticoid = intent.getLongExtra("Fetico_id", 0L)
 
         // Consulta o banco de dados para obter o objeto Item correspondente
         val db = Data_Class_Item_Doa.instancia(this)
-        val itemDao = db.itemDao()
-        itemSelecionado = itemDao.buscaPorId(itemId)
+        val FeiticoDAO = db.feiticoDao()
+        itemSelecionado = FeiticoDAO.buscaPorId(Feiticoid)
 
         // Verifica se o itemSelecionado não é nulo
         if (itemSelecionado != null) {
-            // Use os atributos do itemSelecionado para preencher os componentes visuais
-            val imagem = findViewById<ImageView>(R.id.Imagem)
-            val nomeTextView = findViewById<TextView>(R.id.Nome_do_item)
-            val descricaoTextView = findViewById<TextView>(R.id.descricao_do_item)
-            val bonusTextView = findViewById<TextView>(R.id.Bonus_do_item)
 
             // Configura a imagem usando o bitmap do itemSelecionado
-            imagem.setImageBitmap(itemSelecionado!!.bitmap)
+            Imagem.setImageBitmap(itemSelecionado!!.imagem)
 
             // Configura os TextViews com os outros atributos do itemSelecionado
-            if (nomeTextView != null) {
-                nomeTextView.text = itemSelecionado?.nome.toString()
+            if (Nome_do_feitico != null) {
+                Nome_do_feitico.text = itemSelecionado?.nome.toString()
             }
             // Verifica se descricaoTextView não é null antes de usar
-            if (descricaoTextView != null) {
-                descricaoTextView.text = itemSelecionado?.descricao.toString()
+            if (Descricao != null) {
+                Descricao.text = itemSelecionado?.descricao.toString()
+            }
+            if (Custo_de_mana != null) {
+                Custo_de_mana.text = "Custo de mana: ${itemSelecionado?.custodemana.toString()}"
             }
 
-// Verifica se bonusTextView não é null antes de usar
-            if (bonusTextView != null) {
-                bonusTextView.text = itemSelecionado?.bonus.toString()
+            if (Tempo_de_Carga != null) {
+                Tempo_de_Carga.text = "Tempo de Carga: ${itemSelecionado?.tempodecarga.toString()}"
             }
         }
-    }
 
+    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_detalhes_de_item, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-    private lateinit var adapterItem: Adapter_Item
-
-
+    private lateinit var AdapterFeitico: Adapter_Feitico
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        val lista_de_itens: MutableList<Item> = mutableListOf()
-        adapterItem = Adapter_Item(
+        val ListadeFeiticos: MutableList<Item_feitico> = mutableListOf()
+        AdapterFeitico = Adapter_Feitico(
             this,
-            lista_de_itens,
+            ListadeFeiticos,
         )
 
-        adapterItem = Adapter_Item(this, lista_de_itens)
+        AdapterFeitico = Adapter_Feitico(this, ListadeFeiticos)
 
 
         val db = Data_Class_Item_Doa.instancia(this)
-        val itemDao = db.itemDao()
+        val FeiticoDB = db.feiticoDao()
 
         when (item.itemId) {
             R.id.menu_Item_Excluir -> {
                 // Use let para fazer o smart cast
                 itemSelecionado?.let {
                     // Excluir o item do banco de dados
-                    itemDao.remover(it)
+                    FeiticoDB.remover(it)
 
                     // Mude para a nova atividade
-                    val intent = Intent(this, Mochila::class.java)
+                    val intent = Intent(this, test_acitivty_feiticoslist::class.java)
                     startActivity(intent)
 
                     // Fechar a atividade (opcional)
@@ -206,48 +208,57 @@ class Editar_Itens_activity : AppCompatActivity() {
 
             R.id.menu_detalhes_edita -> {
                 dialog = Dialog(this)
-                dialog.setContentView(R.layout.ficha_novo_item)
+                dialog.setContentView(R.layout.cria_edita_feitico)
                 dialog.show()
 
-                // imagem,
-                var Adicionar_Imagem = dialog.findViewById<ImageButton>(R.id.NovaImagem)
-                // nome
-                var Texto_Item_Nome = dialog.findViewById<EditText>(R.id.nomedoitem)
-                // descrição
-                var Texto_Descricao_Item = dialog.findViewById<EditText>(R.id.descricao)
-                // bonus
-                var Texto_Bonus_Item = dialog.findViewById<EditText>(R.id.bonusdoitem)
-                // finalizar
-                var Finalizar_Novo_Item = dialog.findViewById<Button>(R.id.ConcluirButtom)
+                val imagem = dialog.findViewById<ImageButton>(R.id.NovaImagem)
+                val Nome = dialog.findViewById<TextView>(R.id.nome_feitico)
+                val Custo_mana = dialog.findViewById<TextView>(R.id.custo_de_mana)
+                val tempo_carga = dialog.findViewById<TextView>(R.id.tempo_decarga_do_feitico)
+                val descricao = dialog.findViewById<TextView>(R.id.descricao_do_feitico)
+
+                val finalizabutao = dialog.findViewById<Button>(R.id.Butao_de_concluir)
 
                 // Carregar os detalhes do itemSelecionado nos campos de edição
-                Texto_Item_Nome.setText(itemSelecionado?.nome)
-                Texto_Descricao_Item.setText(itemSelecionado?.descricao)
-                Texto_Bonus_Item.setText(itemSelecionado?.bonus)
+                Nome.setText(itemSelecionado?.nome)
+                Custo_mana.setText(itemSelecionado?.custodemana)
+                tempo_carga.setText(itemSelecionado?.tempodecarga)
+                descricao.setText(itemSelecionado?.descricao)
                 // Configure a imagem do itemSelecionado
-                Adicionar_Imagem.setImageBitmap(itemSelecionado?.bitmap)
+                imagem.setImageBitmap(itemSelecionado?.imagem)
 
-                Adicionar_Imagem.setOnClickListener {
+                imagem.setOnClickListener {
                     PermissaoGaleria()
                 }
-                Finalizar_Novo_Item.setOnClickListener {
+
+                finalizabutao.setOnClickListener {
                     // Atualiza os valores do itemSelecionado
-                    itemSelecionado?.nome = Texto_Item_Nome.text.toString()
-                    itemSelecionado?.descricao = Texto_Descricao_Item.text.toString()
-                    itemSelecionado?.bonus = Texto_Bonus_Item.text.toString()
-                    itemSelecionado?.bitmap = Adicionar_Imagem.drawable.toBitmap()
+                    itemSelecionado?.imagem = imagem.drawable.toBitmap()
+
+                    itemSelecionado?.nome = Nome.text.toString()
+                    itemSelecionado?.custodemana = Custo_mana.text.toString()
+                    itemSelecionado?.tempodecarga = tempo_carga.text.toString()
+                    itemSelecionado?.descricao = descricao.text.toString()
+
 
 
                     // Atualiza o item no banco de dados
-                    itemDao.atualiza(itemSelecionado!!)
+                    FeiticoDB.atualiza(itemSelecionado!!)
 
                     // Atualiza a RecyclerView
-                    adapterItem.atualiza(itemDao.buscatodos())
+                    AdapterFeitico.atualiza(FeiticoDB.buscatodos())
 
                     dialog.dismiss()
                     // Fechar a atividade (opcional)
+
+                    val intent = Intent(this, test_acitivty_feiticoslist::class.java).apply {
+                        putExtra("Fetico_id", Feiticoid) // Passa o ID do item para a próxima atividade
+                    }
+                    startActivity(intent)
+                    // Fechar a atividade (opcional)
                     finish()
                 }
+
             }
         }
         return super.onOptionsItemSelected(item)

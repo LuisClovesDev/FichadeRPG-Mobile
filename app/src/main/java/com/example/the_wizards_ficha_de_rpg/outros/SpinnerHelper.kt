@@ -1,9 +1,10 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ImageView
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.example.the_wizards_ficha_de_rpg.Atributos
+import com.example.the_wizards_ficha_de_rpg.Elementos
 
 class SpinnerHelper(private val imageView: ImageView) : AdapterView.OnItemSelectedListener {
 
@@ -35,7 +36,7 @@ class SpinnerHelper(private val imageView: ImageView) : AdapterView.OnItemSelect
 
 
     // Método para obter o valor da palavra selecionada
-    fun getPalavra(Nivel: Int, elemento:Elementos, atributo: Atributos) {
+    fun getPalavra(Nivel: Int, elemento: Elementos, atributo: Atributos) {
 
 
     }

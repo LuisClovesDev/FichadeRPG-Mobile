@@ -6,18 +6,21 @@
         <shape>
             <solid android:color="@android:color/transparent" />
             <stroke
-                android:color="@android:color/black"
+                android:color="@color/dourado"
                 android:width="8dp" />
             <corners android:radius="20sp" />
         </shape>
     </item>
 
-    <!-- Camada de borda dourada (sobreposta à borda preta) -->
+    <!-- Camada de gradiente (sobreposta à borda preta) -->
     <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
         <shape>
-            <solid android:color="@color/gray" />
+            <gradient
+                android:startColor="@color/roxo"
+                android:endColor="@color/lilais"
+                android:angle="90" />
             <stroke
-                android:color="@color/dourado"
+                android:color="@android:color/transparent"
                 android:width="4dp" />
             <corners android:radius="20sp" />
         </shape>

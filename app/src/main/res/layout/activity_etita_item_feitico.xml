@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Etita_ItemFeitico"
+    android:background="@drawable/caixa_fundo_feitico"
+    >
+    <TextView
+        android:id="@+id/Nome_do_feitico_edit"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
+        android:textSize="26sp"
+        android:text="NOME DO FEITIÇO"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toTopOf="@id/Imagem_Edit"
+        android:gravity="center"
+        />
+    <ImageView
+        android:id="@+id/Imagem_Edit"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        app:layout_constraintTop_toBottomOf="@id/Nome_do_feitico_edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/galeria"
+        />
+    <TextView
+        android:id="@+id/Descricao_item_edit"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/Imagem_Edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="DESCRIÇÃO : Uma descrição generica de um feitiço"
+        />
+    <TextView
+        android:id="@+id/Custo_de_mana_edit"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/Descricao_item_edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:textColor="@color/AzulClaro"
+        android:text="Custo de mana:"
+        />
+
+    <TextView
+        android:id="@+id/Tempo_de_carga_edit"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/Custo_de_mana_edit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:textColor="@color/laranjaescuro"
+        android:text="Tempo de Carga: "
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

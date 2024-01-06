@@ -1,6 +1,8 @@
+package com.example.the_wizards_ficha_de_rpg.outros
+
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-import com.example.the_wizards_ficha_de_rpg.SpinnerHelper
+import com.example.the_wizards_ficha_de_rpg.outros.SpinnerHelper
 
 class Consolefuns(private val spinner: SpinnerHelper){
 

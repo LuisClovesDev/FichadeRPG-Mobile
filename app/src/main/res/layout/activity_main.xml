@@ -10,60 +10,51 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fundo"
+        android:background="@drawable/caixa_info_modificaatributo"
         tools:context=".MainActivity">
 
         <View
             android:id="@+id/Info"
             android:layout_width="wrap_content"
+            android:background="@drawable/caixadeatributo"
             android:layout_height="60dp"
-            android:background="@drawable/caixa_info_modificaatributo"
             app:layout_constraintBottom_toTopOf="@id/Base_Conteiner_Atributos"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/Console"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="@id/Info"
-            app:layout_constraintEnd_toEndOf="@id/Info"
-            app:srcCompat="@drawable/ic_launcher_background"
-            />
-        <ImageButton
             android:id="@+id/DESTREZABUTAO"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="@id/Info"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="80dp"
             app:layout_constraintEnd_toEndOf="@id/Info"
-            app:srcCompat="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toTopOf="@id/Info"
+            app:srcCompat="@android:drawable/ic_popup_sync"
             />
 
-        <EditText
-            android:id="@+id/nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="NOME:"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="@id/Info"
+        <ImageButton
+            android:id="@+id/Save_Butao"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="10dp"
+            android:src="@android:drawable/ic_menu_save"
+            app:layout_constraintEnd_toEndOf="@id/Info"
             app:layout_constraintTop_toTopOf="@id/Info" />
-
-        <EditText
-            android:id="@+id/idade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:hint="IDADE:"
-            android:textColorHint="@color/black"
+        <TextView
+            android:id="@+id/Texto_info_XP"
+            android:layout_width="40dp"
+            android:layout_height="24dp"
+            app:layout_constraintLeft_toLeftOf="@id/Info"
+            app:layout_constraintTop_toTopOf="@id/Info"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="XP:"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toRightOf="@id/nome"
-            app:layout_constraintTop_toTopOf="@id/nome" />
+            android:textSize="20sp"
+            />
 
         <EditText
             android:id="@+id/xp"
@@ -71,12 +62,25 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:hint="XP:"
-            android:textColorHint="@color/black"
             android:inputType="number"
             android:text="0"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toRightOf="@id/idade"
-            app:layout_constraintTop_toTopOf="@id/idade" />
+            android:textColorHint="@color/black"
+            app:layout_constraintLeft_toRightOf="@id/Texto_info_XP"
+            app:layout_constraintTop_toTopOf="@id/Info" />
+
+        <TextView
+            android:id="@+id/Texto_info_Nivel"
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            app:layout_constraintLeft_toRightOf="@id/xp"
+            app:layout_constraintTop_toTopOf="@id/Info"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="NIVEL:"
+            />
 
         <TextView
             android:id="@+id/Nivel"
@@ -90,30 +94,39 @@
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/xp"
-            app:layout_constraintLeft_toRightOf="@id/xp"
+            app:layout_constraintLeft_toRightOf="@id/Texto_info_Nivel"
             app:layout_constraintTop_toTopOf="@id/xp" />
 
         <View
             android:id="@+id/Base_Conteiner_Atributos"
-            android:layout_width="210dp"
-            android:layout_height="500dp"
-            android:layout_marginBottom="80dp"
-            android:background="@drawable/caixa_info_modificaatributo"
+            android:layout_width="match_parent"
+            android:layout_height="670dp"
             app:layout_constraintBottom_toTopOf="@id/barradebotoes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Info" />
 
-
+        <TextView
+            android:id="@+id/Titulo_Destreza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="DESTREZA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/DESTREZA"
+            app:layout_constraintLeft_toLeftOf="@id/DESTREZA"
+            app:layout_constraintRight_toRightOf="@id/DESTREZA"
+            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Atributos" />
 
         <View
             android:id="@+id/DESTREZA"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/destreza_caixa"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Atributos" />
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Destreza" />
         <!-- EDIT E TEXT VIEW -->
 
         <EditText
@@ -122,11 +135,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/DESTREZA"
             app:layout_constraintTop_toTopOf="@id/DESTREZA" />
 
@@ -161,15 +174,28 @@
             app:layout_constraintTop_toTopOf="@id/DESTREZA"
             app:srcCompat="@drawable/hab" />
 
+        <TextView
+            android:id="@+id/Titulo_Resistencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="RESISTENCIA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/RESISTENCIA"
+            app:layout_constraintLeft_toLeftOf="@id/RESISTENCIA"
+            app:layout_constraintRight_toRightOf="@id/RESISTENCIA"
+            app:layout_constraintTop_toBottomOf="@id/DESTREZA" />
+
         <View
             android:id="@+id/RESISTENCIA"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/resistencia"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/DESTREZA"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Resistencia"
 
             />
 
@@ -179,11 +205,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/RESISTENCIA"
             app:layout_constraintTop_toTopOf="@id/RESISTENCIA" />
 
@@ -218,16 +244,29 @@
             app:layout_constraintTop_toTopOf="@id/RESISTENCIA"
             app:srcCompat="@drawable/res" />
 
+        <TextView
+            android:id="@+id/Titulo_Inteligencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="INTELIGENCIA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/INTELIGENCIA"
+            app:layout_constraintLeft_toLeftOf="@id/INTELIGENCIA"
+            app:layout_constraintRight_toRightOf="@id/INTELIGENCIA"
+            app:layout_constraintTop_toBottomOf="@id/RESISTENCIA" />
+
 
         <View
             android:id="@+id/INTELIGENCIA"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/inteligencia_caixa"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/RESISTENCIA"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Inteligencia"
 
             />
 
@@ -237,11 +276,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/INTELIGENCIA"
             app:layout_constraintTop_toTopOf="@id/INTELIGENCIA" />
 
@@ -254,6 +293,7 @@
             app:layout_constraintLeft_toRightOf="@id/editaINTELIGENCIA"
             app:layout_constraintTop_toTopOf="@id/editaINTELIGENCIA"
             tools:text="10" />
+
         <TextView
             android:id="@+id/BonusExtra_INTELIGENCIA"
             android:layout_width="46dp"
@@ -275,15 +315,28 @@
             app:layout_constraintTop_toTopOf="@id/INTELIGENCIA"
             app:srcCompat="@drawable/armm" />
 
+        <TextView
+            android:id="@+id/Titulo_Forca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="FORÇA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/FORCA"
+            app:layout_constraintLeft_toLeftOf="@id/FORCA"
+            app:layout_constraintRight_toRightOf="@id/FORCA"
+            app:layout_constraintTop_toBottomOf="@id/INTELIGENCIA" />
+
         <View
             android:id="@+id/FORCA"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/forca_caixa"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/INTELIGENCIA" />
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Forca" />
 
         <EditText
             android:id="@+id/editaFORCA"
@@ -291,11 +344,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/FORCA"
             app:layout_constraintTop_toTopOf="@id/FORCA" />
 
@@ -330,15 +383,28 @@
             app:layout_constraintTop_toTopOf="@id/FORCA"
             app:srcCompat="@drawable/forsa" />
 
+        <TextView
+            android:id="@+id/Titulo_Vida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="VIDA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/vidaA"
+            app:layout_constraintLeft_toLeftOf="@id/vidaA"
+            app:layout_constraintRight_toRightOf="@id/vidaA"
+            app:layout_constraintTop_toBottomOf="@id/FORCA" />
+
         <View
             android:id="@+id/vidaA"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/vida_caixa"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/FORCA"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Vida"
 
             />
 
@@ -348,11 +414,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/vidaA"
             app:layout_constraintTop_toTopOf="@id/vidaA" />
 
@@ -375,15 +441,28 @@
             app:layout_constraintTop_toTopOf="@id/vidaA"
             app:srcCompat="@drawable/hp" />
 
+        <TextView
+            android:id="@+id/Titulo_Mana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="MANA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/mana"
+            app:layout_constraintLeft_toLeftOf="@id/mana"
+            app:layout_constraintRight_toRightOf="@id/mana"
+            app:layout_constraintTop_toBottomOf="@id/vidaA" />
+
         <View
             android:id="@+id/mana"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/caixadeatributo"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/mana_caixa"
             app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/vidaA" />
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Mana" />
 
         <EditText
             android:id="@+id/editaMANA"
@@ -391,11 +470,11 @@
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
-            android:textSize="12dp"
             android:hint="Pontos"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:textSize="12dp"
             app:layout_constraintLeft_toLeftOf="@id/mana"
             app:layout_constraintTop_toTopOf="@id/mana" />
 
@@ -420,6 +499,7 @@
             app:layout_constraintLeft_toRightOf="@id/editaMANA"
             app:layout_constraintTop_toTopOf="@id/editaMANA"
             tools:text="10" />
+
         <TextView
             android:id="@+id/BonusExtra_MANA"
             android:layout_width="46dp"
@@ -441,69 +521,74 @@
             app:layout_constraintTop_toTopOf="@id/mana"
             app:srcCompat="@drawable/mp" />
 
-        <View
-            android:id="@+id/Base_Conteiner_Modificadores_Mobilidade"
-            android:layout_width="190dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/caixa_info_modificaatributo"
-            app:layout_constraintLeft_toRightOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Atributos"
-
-            />
+        <TextView
+            android:id="@+id/Titulo_Mobilidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="MOBILIDADE"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/Mobilidade"
+            app:layout_constraintLeft_toLeftOf="@id/Mobilidade"
+            app:layout_constraintRight_toRightOf="@id/Mobilidade"
+            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Atributos" />
 
         <View
             android:id="@+id/Mobilidade"
-            android:layout_width="120dp"
+            android:layout_width="170dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/caixadeatributo"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Modificadores_Mobilidade"
-            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Modificadores_Mobilidade" />
+            android:layout_marginLeft="48dp"
+            android:background="@drawable/mobilidade_caixa"
+            app:layout_constraintStart_toEndOf="@id/DESTREZA"
+            app:layout_constraintTop_toTopOf="@id/DESTREZA" />
 
         <TextView
             android:id="@+id/Mobilidade_Bonus"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginLeft="12dp"
             android:hint="0 M"
             android:textColor="@color/black"
-            android:textSize="40dp"
+            android:textSize="24sp"
             android:textStyle="bold"
+            android:gravity="center"
+            android:lines="1"
             app:layout_constraintBottom_toBottomOf="@id/Mobilidade"
             app:layout_constraintLeft_toLeftOf="@id/Mobilidade"
             app:layout_constraintTop_toTopOf="@id/Mobilidade" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintStart_toEndOf="@id/Mobilidade"
-            app:layout_constraintTop_toTopOf="@id/Mobilidade"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintRight_toRightOf="@id/Mobilidade"
+            app:layout_constraintTop_toTopOf="@id/Mobilidade_Bonus"
             app:srcCompat="@drawable/corre" />
 
-        <View
-            android:id="@+id/Base_Conteiner_Modificadores_Armadura"
-            android:layout_width="190dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/caixa_info_modificaatributo"
-            app:layout_constraintLeft_toRightOf="@id/Base_Conteiner_Atributos"
-            app:layout_constraintTop_toBottomOf="@id/Base_Conteiner_Modificadores_Mobilidade"
-
-            />
+        <TextView
+            android:id="@+id/Titulo_Armaduras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ARMADURAS"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/Armaduras"
+            app:layout_constraintLeft_toLeftOf="@id/Armaduras"
+            app:layout_constraintRight_toRightOf="@id/Armaduras"
+            app:layout_constraintTop_toBottomOf="@id/Mobilidade" />
 
         <View
             android:id="@+id/Armaduras"
             android:layout_width="170dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/caixadeatributo"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Modificadores_Armadura"
-            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Modificadores_Armadura"
-            app:layout_constraintRight_toRightOf="@id/Base_Conteiner_Modificadores_Armadura"
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/armaduras_caixa"
+            app:layout_constraintStart_toEndOf="@id/RESISTENCIA"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Armaduras"
 
             />
 
@@ -521,6 +606,18 @@
             app:layout_constraintLeft_toLeftOf="@id/Armaduras"
             app:layout_constraintTop_toTopOf="@id/Armaduras" />
 
+        <TextView
+            android:id="@+id/Armadura_Fisica_Extra_Bonus"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:hint="0"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintRight_toLeftOf="@id/imageView8"
+            app:layout_constraintTop_toTopOf="@id/Armadura_Fisica_Bonus" />
+
 
         <ImageView
             android:id="@+id/imageView8"
@@ -537,7 +634,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:hint="0"
-            android:textColor="@color/black"
+            android:textColor="@color/gray"
             android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/Armaduras"
@@ -553,26 +650,28 @@
             app:layout_constraintTop_toTopOf="@id/Armaduras"
             app:srcCompat="@drawable/armaduramagica" />
 
-
-        <View
-            android:id="@+id/Base_Conteiner_Adicionais"
-            android:layout_width="200dp"
-            android:layout_height="340dp"
-            android:layout_marginBottom="80dp"
-            android:background="@drawable/caixa_info_modificaatributo"
-            app:layout_constraintBottom_toTopOf="@id/barradebotoes"
-            app:layout_constraintLeft_toLeftOf="@id/Base_Conteiner_Modificadores_Armadura"
+        <TextView
+            android:id="@+id/Titulo_Elementos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ELEMENTOS"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/ELEMENTOS"
+            app:layout_constraintLeft_toLeftOf="@id/ELEMENTOS"
+            app:layout_constraintRight_toRightOf="@id/ELEMENTOS"
             app:layout_constraintTop_toBottomOf="@id/Armaduras" />
+
 
         <Spinner
             android:id="@+id/ELEMENTOS"
             android:layout_width="120dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/spinnerpersonalizado1"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Adicionais"
-            app:layout_constraintTop_toTopOf="@id/Base_Conteiner_Adicionais"
+            app:layout_constraintStart_toStartOf="@id/Armaduras"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Elementos"
 
             />
 
@@ -585,15 +684,27 @@
 
             />
 
+        <TextView
+            android:id="@+id/Titulo_Raca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="RAÇA"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/RACA_SPINNER"
+            app:layout_constraintLeft_toLeftOf="@id/RACA_SPINNER"
+            app:layout_constraintRight_toRightOf="@id/RACA_SPINNER"
+            app:layout_constraintTop_toBottomOf="@id/ELEMENTOS" />
+
         <Spinner
             android:id="@+id/RACA_SPINNER"
             android:layout_width="120dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/spinnerpersonalizado1"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Adicionais"
-            app:layout_constraintTop_toBottomOf="@id/ELEMENTOS"
+            app:layout_constraintStart_toStartOf="@id/Armaduras"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Raca"
 
             />
 
@@ -606,16 +717,27 @@
 
             />
 
+        <TextView
+            android:id="@+id/Titulo_VaneDesm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TRADE-OFF"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/VantagemeDesvantagem"
+            app:layout_constraintLeft_toLeftOf="@id/VantagemeDesvantagem"
+            app:layout_constraintRight_toRightOf="@id/VantagemeDesvantagem"
+            app:layout_constraintTop_toBottomOf="@id/RACA_SPINNER" />
 
         <View
             android:id="@+id/VantagemeDesvantagem"
             android:layout_width="160dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/caixa_info_modificaatributo"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Adicionais"
-            app:layout_constraintTop_toBottomOf="@id/RACA_SPINNER" />
+            android:background="@drawable/armaduras_caixa"
+            app:layout_constraintStart_toStartOf="@id/Armaduras"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_VaneDesm" />
 
         <Spinner
             android:id="@+id/Vantagem_Sppiner"
@@ -624,7 +746,7 @@
             android:layout_marginVertical="10dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:background="@color/grey"
+            android:background="@drawable/destreza_caixa"
             app:layout_constraintLeft_toLeftOf="@id/VantagemeDesvantagem"
             app:layout_constraintTop_toTopOf="@id/VantagemeDesvantagem" />
 
@@ -633,30 +755,41 @@
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
-            android:background="@color/RED"
+            android:background="@drawable/forca_caixa"
             app:layout_constraintLeft_toRightOf="@id/Vantagem_Sppiner"
             app:layout_constraintTop_toTopOf="@id/Vantagem_Sppiner" />
+
+        <TextView
+            android:id="@+id/Titulo_Pericias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="PERICIAS"
+            android:textColor="@color/dourado"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/Pericia_Sppiner"
+            app:layout_constraintLeft_toLeftOf="@id/Pericia_Sppiner"
+            app:layout_constraintRight_toRightOf="@id/Pericia_Sppiner"
+            app:layout_constraintTop_toBottomOf="@id/VantagemeDesvantagem" />
 
         <Spinner
             android:id="@+id/Pericia_Sppiner"
             android:layout_width="160dp"
             android:layout_height="66dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/spinnerpersonalizado1"
-            app:layout_constraintStart_toStartOf="@id/Base_Conteiner_Adicionais"
-            app:layout_constraintTop_toBottomOf="@id/VantagemeDesvantagem"
+            app:layout_constraintStart_toStartOf="@id/Armaduras"
+            app:layout_constraintTop_toBottomOf="@id/Titulo_Pericias"
 
             />
+
         <View
             android:id="@+id/barradebotoes"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            android:layout_marginBottom="2dp"
+            android:background="@drawable/item_bacgraund"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:background="@drawable/caixa_info_modificaatributo"
-            />
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <ImageButton
             android:id="@+id/BotaoMochila"
@@ -664,9 +797,19 @@
             android:layout_height="100dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="12dp"
-            app:layout_constraintTop_toTopOf="@id/barradebotoes"
-            app:layout_constraintRight_toRightOf="@id/barradebotoes"
             android:background="@drawable/efeitoclick"
+            app:layout_constraintRight_toRightOf="@id/barradebotoes"
+            app:layout_constraintTop_toTopOf="@id/barradebotoes" />
+
+        <ImageButton
+            android:id="@+id/BotaoFeiticos"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/livro"
+            app:layout_constraintTop_toTopOf="@+id/barradebotoes"
+            app:layout_constraintLeft_toLeftOf="@id/barradebotoes"
             />
 
 

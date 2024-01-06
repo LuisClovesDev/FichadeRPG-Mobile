@@ -1,6 +1,22 @@
-package com.example.the_wizards_ficha_de_rpg
+package com.example.the_wizards_ficha_de_rpg.outros
 
 import android.widget.ImageView
+import android.widget.Spinner
+import com.example.the_wizards_ficha_de_rpg.Agua
+import com.example.the_wizards_ficha_de_rpg.Ar
+import com.example.the_wizards_ficha_de_rpg.Elementos
+import com.example.the_wizards_ficha_de_rpg.Explosao
+import com.example.the_wizards_ficha_de_rpg.Ferro
+import com.example.the_wizards_ficha_de_rpg.Fogo
+import com.example.the_wizards_ficha_de_rpg.Gas
+import com.example.the_wizards_ficha_de_rpg.Gelo
+import com.example.the_wizards_ficha_de_rpg.Luz
+import com.example.the_wizards_ficha_de_rpg.R
+import com.example.the_wizards_ficha_de_rpg.Relampago
+import com.example.the_wizards_ficha_de_rpg.Sangue
+import com.example.the_wizards_ficha_de_rpg.Sombra
+import com.example.the_wizards_ficha_de_rpg.Terra
+import com.example.the_wizards_ficha_de_rpg.Verde
 
 class Elementos_funcoes {
 
@@ -32,10 +48,7 @@ class Elementos_funcoes {
                 "fogo" -> R.drawable.fogo
                 "agua" -> R.drawable.agua
                 "terra" -> R.drawable.terra
-                "Ar" -> {
-                    imageView.setImageResource(R.drawable.ar)
-                    return "Ar"
-                }
+                "Ar" -> R.drawable.ar
                 "Luz" -> R.drawable.luz
                 "Sombra" -> R.drawable.sombra
                 "verde" -> R.drawable.verde
@@ -59,6 +72,9 @@ class Elementos_funcoes {
         }
     }
 
+    fun obterTextoDoSpinner(spinner: Spinner): String {
+        return spinner.selectedItem.toString()
+    }
     fun getNomeElemento(RacaAtual: String): String {
         return when (RacaAtual) {
             "fogo" -> "Fogo"
